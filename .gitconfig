@@ -1,0 +1,7 @@
+[user]
+	name = Xu Di
+	email = xudifsd@gmail.com
+[color]
+	ui = true
+[push]
+	default = matching

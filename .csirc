@@ -1,0 +1,5 @@
+(use readline)
+(current-input-port (make-gnu-readline-port))
+(gnu-history-install-file-manager
+	(string-append (or (get-environment-variable "HOME") ".") "/.csi.history"))
+(gnu-readline-parse-and-bind "set editing-mode vi")
