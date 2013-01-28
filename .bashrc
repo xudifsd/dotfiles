@@ -109,6 +109,7 @@ fi
 # add by xudifsd
 export EDITOR=vim
 alias vi='vim'
+alias sudo='sudo '	#makes you could use config of your own
 alias run='runjava.sh'	#make it's easy to compile java program and run it
 alias wget='wget -c --read-timeout=15 --tries=100'	#make wget download faster in slow Internet connection situation
 #alias curl='curl -C - -m 60 --retry 100'
@@ -124,8 +125,9 @@ alias copychromecache='find .cache/chromium/Default/Cache -type f |\
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
 
 export LD_LIBRARY_PATH=/usr/local/lib	#this is for libgit2
-export PATH=$PATH:/home/xudifsd/usr/local/arm/3.3.2/bin
 export CHICKEN_DOC_REPOSITORY=/home/xudifsd/Downloads/chicken-doc/
 export CHICKEN_DOC_PAGER=less
 export MAIL=/var/spool/mail/xudifsd
-#export PS1="\[\033[1;33;1m\][\[\033[0;33;1m\]\u@\h:\[\033[1;35;1m\]\w\[\033[1;33;1m\]]\[\033[1;31;1m\]\$\[\033[1;33;1m\]"
+
+#for using ibus in libreoffice
+export XMODIFIERS=@im=ibus

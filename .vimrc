@@ -54,3 +54,6 @@ augroup Program
 	autocmd BufNewFile *.c 0r ~/Templates/c
 	autocmd BufNewFile *.h 0r ~/Templates/h
 augroup END
+
+nmap <leader>md :%!md2html --html4tags <cr>
+au BufRead,BufNewFile *.md set filetype=markdown "设置后缀名为md的文件为markdown文件
