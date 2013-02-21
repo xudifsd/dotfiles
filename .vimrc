@@ -52,7 +52,6 @@ augroup Program
 	autocmd BufNewFile *.html 0r ~/Templates/html
 	autocmd BufNewFile *.py 0r ~/Templates/python
 	autocmd BufNewFile *.c 0r ~/Templates/c
-	autocmd BufNewFile *.h 0r ~/Templates/h
 augroup END
 
 nmap <leader>md :%!md2html --html4tags <cr>
