@@ -121,6 +121,8 @@ alias copychromecache='find .cache/chromium/Default/Cache -type f |\
 					  grep -v JPEG|grep -v ASCII | grep -v HTML|grep -v gzip|grep -v PNG|grep -v data | grep -v text|\
 					  cut -f1 -d ":"|\
 					  xargs copy_to_home_temp.sh'
+alias clojure="rlwrap java -cp /usr/share/clojure/clojure.jar clojure.main"
+alias openvpn="sudo openvpn /etc/openvpn/vip.conf"
 
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
 
