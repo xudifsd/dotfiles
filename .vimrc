@@ -60,8 +60,10 @@ au BufRead,BufNewFile *.clj set filetype=clojure "设置后缀名为clj的文件
 
 map j gj
 map k gk
-map <Up> gk
-map <Down> gj
+map <Up> g<Up>
+map <Down> g<Down>
+imap <Up> <Esc>g<Up>a
+imap <Down> <Esc>g<Down>a
 
 
 set rtp+=~/.vim/bundle/vundle/
