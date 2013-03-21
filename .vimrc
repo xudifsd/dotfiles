@@ -1,5 +1,5 @@
 "编辑环境设置
-filetype on	"检测文件类型
+filetype off	"检测文件类型
 if has("syntax")	"开启语法高亮
 	syntax on
 endif
@@ -45,7 +45,7 @@ if has("autocmd")	"让光标指向上次编辑的位置
 	 \ endif
 endif
 
-autocmd filetype lisp,scheme,art setlocal equalprg=indent.lisp
+autocmd filetype lisp,scheme,art,clojure setlocal equalprg=indent.lisp
 
 "运行自动命令
 augroup Program
@@ -56,3 +56,44 @@ augroup END
 
 nmap <leader>md :%!md2html --html4tags <cr>
 au BufRead,BufNewFile *.md set filetype=markdown "设置后缀名为md的文件为markdown文件
+au BufRead,BufNewFile *.clj set filetype=clojure "设置后缀名为clj的文件为clojure文件
+
+map j gj
+map k gk
+map <Up> gk
+map <Down> gj
+
+
+set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/powerline/bindings/vim
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+" non github repos
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'git://github.com/Lokaltog/powerline.git'
+" ...
+
+	filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
