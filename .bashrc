@@ -124,6 +124,7 @@ alias copychromecache='find .cache/chromium/Default/Cache -type f |\
 alias clojure="rlwrap java -cp /usr/share/clojure/clojure.jar clojure.main"
 alias openvpn="sudo openvpn /etc/openvpn/vip.conf"
 alias gcc-gui="gcc `pkg-config --cflags --libs gtk+-2.0`"
+alias emacs="emacs -nw"
 
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
 

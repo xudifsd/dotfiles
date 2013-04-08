@@ -89,7 +89,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git://github.com/Lokaltog/powerline.git'
 " ...
 
-	filetype plugin indent on     " required!
+filetype plugin indent on     " required!
 "
 " Brief help
 " :BundleList          - list configured bundles
