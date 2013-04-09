@@ -87,6 +87,7 @@ Bundle 'FuzzyFinder'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git://github.com/Lokaltog/powerline.git'
+Bundle 'stephenmckinney/vim-solarized-powerline'
 " ...
 
 filetype plugin indent on     " required!
@@ -99,3 +100,9 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
+
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:Powerline_theme='short'
+let g:Powerline_colorscheme='solarized256'
+set laststatus=2

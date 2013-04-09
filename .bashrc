@@ -123,8 +123,6 @@ alias copychromecache='find .cache/chromium/Default/Cache -type f |\
 					  xargs copy_to_home_temp.sh'
 alias clojure="rlwrap java -cp /usr/share/clojure/clojure.jar clojure.main"
 alias openvpn="sudo openvpn /etc/openvpn/vip.conf"
-alias gcc-gui="gcc `pkg-config --cflags --libs gtk+-2.0`"
-alias emacs="emacs -nw"
 
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
 
@@ -137,4 +135,8 @@ export MAIL=/var/spool/mail/xudifsd
 export XMODIFIERS=@im=ibus
 
 #using powerline plugin in bash prompt
-~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
+function _update_ps1() {
+	export PS1="$(~/dev/powerline-shell/powerline-shell.py $?)"
+}
+
+export PROMPT_COMMAND="_update_ps1"
