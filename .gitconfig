@@ -1,7 +1,11 @@
 [user]
 	name = Xu Di
-	email = xudifsd@gmail.com
+	email = xudi@admaster.com.cn
 [color]
 	ui = true
 [push]
 	default = matching
+[core]
+	editor = vim
+[alias]
+	plog = log --graph --full-history --all --pretty=format:\"%h%x09%d%x20%s\"

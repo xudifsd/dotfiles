@@ -7,8 +7,8 @@ set nocp	"不以模拟vi方式运行
 set number	"显示行号
 set cindent	"在C语言中自动缩进
 set autoindent	"自动缩进（下一行与当前行缩进一样）
-set tabstop=8	"设置tab键为8个空格
-set shiftwidth=8	"设置缩进空格数为8
+set tabstop=4	"设置tab键为4个空格
+set shiftwidth=4	"设置缩进空格数为4
 set background=dark "设置背景为黑
 set nobackup	"不生成备份文件
 if has('mouse')	"在全模式下使用鼠标
