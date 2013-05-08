@@ -121,7 +121,6 @@ alias copychromecache='find .cache/chromium/Default/Cache -type f |\
 					  grep -v JPEG|grep -v ASCII | grep -v HTML|grep -v gzip|grep -v PNG|grep -v data | grep -v text|\
 					  cut -f1 -d ":"|\
 					  xargs copy_to_home_temp.sh'
-alias clojure="rlwrap java -cp /usr/share/clojure/clojure.jar clojure.main"
 alias openvpn="sudo openvpn /etc/openvpn/vip.conf"
 
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
@@ -136,7 +135,28 @@ export XMODIFIERS=@im=ibus
 
 #using powerline plugin in bash prompt
 function _update_ps1() {
-	export PS1="$(~/dev/powerline-shell/powerline-shell.py $?)"
+	export PS1="$(/home/xudifsd/dev/powerline-shell/powerline-shell.py $?)"
 }
 
 export PROMPT_COMMAND="_update_ps1"
+#for hadoop
+export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/"
+export CLASSPATH=".:$JAVA_HOME/lib:/home/xudifsd/jar/*:/usr/share/java/clojure.jar:/home/xudifsd/hadoop-1.0.4/conf"
+export PIG_CLASSPATH="/root/hadoop-1.0.4/conf:$JAVA_HOME/lib:/usr/share/java:."
+export PATH=$PATH:/home/xudifsd/hadoop-1.0.4/pig-0.11.1/bin:/home/xudifsd/hadoop-1.0.4/bin/
+
+#for http://www.vanheusden.com/httping/
+alias httping='httping -S -Y -Z -s --offset-yellow 370 --offset-red 380'
+
+set -o vi #use vi mode
+bind -m vi-insert '\c-l':clear-screen
+bind -m vi-insert '\c-x':vi-movement-mode
+bind -m vi-insert '\c-e':end-of-line
+bind -m vi-insert '\c-a':beginning-of-line
+bind -m vi-insert '\c-b':backward-char
+bind -m vi-insert '\c-f':forward-char
+
+#add for coursera compiler
+export PATH=/usr/class/cs143/cool/bin:$PATH
+
+alias octave="octave -q"

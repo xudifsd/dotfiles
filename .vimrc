@@ -7,6 +7,7 @@ set nocp	"不以模拟vi方式运行
 set number	"显示行号
 set cindent	"在C语言中自动缩进
 set autoindent	"自动缩进（下一行与当前行缩进一样）
+set expandtab "使用space代替tab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
 set background=dark "设置背景为黑
@@ -45,7 +46,7 @@ if has("autocmd")	"让光标指向上次编辑的位置
 	 \ endif
 endif
 
-autocmd filetype lisp,scheme,art,clojure setlocal equalprg=indent.lisp
+autocmd filetype lisp,scheme,art setlocal equalprg=indent.lisp
 
 "运行自动命令
 augroup Program
@@ -55,17 +56,29 @@ augroup Program
 augroup END
 
 nmap <leader>md :%!md2html --html4tags <cr>
-au BufRead,BufNewFile *.md set filetype=markdown "设置后缀名为md的文件为markdown文件
-au BufRead,BufNewFile *.clj set filetype=clojure "设置后缀名为clj的文件为clojure文件
+augroup filetypedetect
+	au BufRead,BufNewFile *.md set filetype=markdown
+	au BufRead,BufNewFile *.clj set filetype=clojure
+	au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+	au BufNewFile,BufRead *.cl set filetype=cool
+augroup END
 
-map j gj
-map k gk
 map ; :
 map <Up> g<Up>
 map <Down> g<Down>
 imap <Up> <Esc>g<Up>a
 imap <Down> <Esc>g<Down>a
 
+"makes it easier when in multi-window
+nnoremap <C-Up> <C-W><C-Up>
+nnoremap <C-Down> <C-W><C-Down>
+nnoremap <C-h> <C-W><C-h>
+nnoremap <C-j> <C-W><C-j>
+nnoremap <C-k> <C-W><C-k>
+nnoremap <C-l> <C-W><C-l>
+
+set splitbelow
+set splitright
 
 set rtp+=~/.vim/bundle/vundle/
 set rtp+=~/.vim/powerline/bindings/vim
@@ -107,3 +120,28 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 let g:Powerline_theme='short'
 let g:Powerline_colorscheme='solarized256'
 set laststatus=2
+
+augroup for_pig
+	autocmd FileType pig abbreviate pigstorage PigStorage
+	autocmd FileType pig abbreviate count COUNT
+	autocmd FileType pig abbreviate sum SUM
+	autocmd FileType pig abbreviate flatten FLATTEN
+	autocmd FileType pig abbreviate load LOAD
+	autocmd FileType pig abbreviate group GROUP
+	autocmd FileType pig abbreviate using USING
+	autocmd FileType pig abbreviate as AS
+	autocmd FileType pig abbreviate by BY
+	autocmd FileType pig abbreviate distinct DISTINCT
+	autocmd FileType pig abbreviate generate GENERATE
+	autocmd FileType pig abbreviate foreach FOREACH
+	autocmd FileType pig abbreviate dump DUMP
+	autocmd FileType pig abbreviate store STORE
+	autocmd FileType pig abbreviate union UNION
+	autocmd FileType pig abbreviate cogroup COGROUP
+	autocmd FileType pig abbreviate cross CROSS
+	autocmd FileType pig abbreviate describe DESCRIBE
+	autocmd FileType pig abbreviate filter FILTER
+	autocmd FileType pig abbreviate order ORDER
+	autocmd FileType pig abbreviate join JOIN
+	autocmd FileType pig abbreviate limit LIMIT
+augroup END
