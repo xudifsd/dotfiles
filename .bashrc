@@ -116,7 +116,7 @@ alias wget='wget -c --read-timeout=15 --tries=100'	#make wget download faster in
 alias sig='ctags -R --c-kinds=+p --fields=+S .'	#code_complete will use tags to scan prototype of function
 alias csi='csi -quiet'	#make csi start without message
 alias clisp='clisp -q'	#make clisp start without message
-alias copychromecache='find .cache/chromium/Default/Cache -type f |\
+alias copychromecache='find .cache/google-chrome/Default/Cache -type f |\
 					  xargs file|\
 					  grep -v JPEG|grep -v ASCII | grep -v HTML|grep -v gzip|grep -v PNG|grep -v data | grep -v text|\
 					  cut -f1 -d ":"|\
@@ -156,7 +156,10 @@ bind -m vi-insert '\c-a':beginning-of-line
 bind -m vi-insert '\c-b':backward-char
 bind -m vi-insert '\c-f':forward-char
 
+alias xclip="xclip -selection c"
+
 #add for coursera compiler
 export PATH=/usr/class/cs143/cool/bin:$PATH
 
 alias octave="octave -q"
+alias work="ssh xudi@admaster-server"
