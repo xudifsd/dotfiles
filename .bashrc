@@ -130,9 +130,6 @@ export CHICKEN_DOC_REPOSITORY=/home/xudifsd/Downloads/chicken-doc/
 export CHICKEN_DOC_PAGER=less
 export MAIL=/var/spool/mail/xudifsd
 
-#for using ibus in libreoffice
-export XMODIFIERS=@im=ibus
-
 #using powerline plugin in bash prompt
 function _update_ps1() {
 	export PS1="$(/home/xudifsd/dev/powerline-shell/powerline-shell.py $?)"
@@ -163,3 +160,5 @@ export PATH=/usr/class/cs143/cool/bin:$PATH
 
 alias octave="octave -q"
 alias work="ssh xudi@admaster-server"
+alias pull="scp xudi@admaster-server:HD/output/*.csv output/ && ssh xudi@admaster-server rm HD/output/*.csv"
+[[ -z "$TMUX" ]] && exec tmux -2

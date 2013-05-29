@@ -33,8 +33,8 @@ set undofile
 set undolevels=1000 "可被undo的次数
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
-"colorscheme molokai
-colorscheme solarized
+colorscheme molokai
+"colorscheme solarized
 set t_Co=256
 
 "一些自动命令
@@ -95,6 +95,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
+Bundle 'kien/ctrlp.vim'
+Bundle 'EasyMotion'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -145,3 +147,15 @@ augroup for_pig
 	autocmd FileType pig abbreviate join JOIN
 	autocmd FileType pig abbreviate limit LIMIT
 augroup END
+
+"for CtrlP
+noremap <C-W><C-U> :CtrlPMRU<CR>
+nnoremap <C-W>u :CtrlPMRU<CR>
+
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
