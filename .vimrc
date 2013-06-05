@@ -21,6 +21,7 @@ set scrolloff=100	"保持与上下10行的间距
 set showcmd	"显示输入的命令
 set cursorline	"高亮所在行
 set cursorcolumn "高亮所在列
+set ignorecase smartcase
 
 "There are so many times I realized that I don't need taglist when I start
 "So I comment out the following two lines, if you want to open a taglist
@@ -33,7 +34,7 @@ set undofile
 set undolevels=1000 "可被undo的次数
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
-colorscheme molokai
+"colorscheme molokai
 "colorscheme solarized
 set t_Co=256
 
