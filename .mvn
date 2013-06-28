@@ -1,5 +1,5 @@
 #Create mvn project
-mvn archetype:create -DgroupId=cn.com.admaster.mvntest -DartifactId=simple -DpackageName=cn.com.admaster
+mvn archetype:create -DgroupId=org.xudifsd -DartifactId=simple -DpackageName=org.xudifsd
 
 #Execute under mvn
 mvn exec:java -Dexec.mainClass=org.xudifsd.Test
@@ -58,3 +58,20 @@ and run $ mvn jetty:run
 Once you've added this configuration, you can build the assembly by running mvn
 assembly:assembly.
 $ mvn install assembly:assembly
+
+#build mvn with java 1.6 support(this is a shit config)
+<build>
+    [...]
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+                <source>1.6</source>
+                <target>1.6</target>
+            </configuration>
+        </plugin>
+    </plugins>
+    [...]
+</build>
