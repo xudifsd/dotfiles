@@ -109,6 +109,7 @@ myinternet = {
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian_menu.Debian },
                                     { "Internet", myinternet },
+                                    { "File", "nautilus"},
                                     { "open terminal", terminal }
                                   }
                         })
