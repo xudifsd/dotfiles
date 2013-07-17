@@ -7,7 +7,7 @@ set nocp	"不以模拟vi方式运行
 set number	"显示行号
 set cindent	"在C语言中自动缩进
 set autoindent	"自动缩进（下一行与当前行缩进一样）
-set expandtab "使用space代替tab
+"set expandtab "使用space代替tab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
 set background=dark "设置背景为黑
@@ -27,7 +27,7 @@ set ignorecase smartcase
 "So I comment out the following two lines, if you want to open a taglist
 "just type :TlistOpen
 "let Tlist_Auto_Open = 1	"自动打开TlistToggle
-"let Tlist_Exit_OnlyWindow = 1	"当只剩Tlist窗口则自动退出
+let Tlist_Exit_OnlyWindow = 1	"当只剩Tlist窗口则自动退出
 
 set undodir=~/.vim/undodir	"持久性undo in version7.3
 set undofile
@@ -105,6 +105,7 @@ Bundle 'FuzzyFinder'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git://github.com/Lokaltog/powerline.git'
 Bundle 'stephenmckinney/vim-solarized-powerline'
+Bundle 'https://github.com/terryma/vim-multiple-cursors'
 " ...
 
 filetype plugin indent on     " required!

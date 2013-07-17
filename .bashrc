@@ -122,6 +122,7 @@ alias copychromecache='find .cache/google-chrome/Default/Cache -type f |\
 					  cut -f1 -d ":"|\
 					  xargs copy_to_home_temp.sh'
 alias openvpn="sudo openvpn /etc/openvpn/vip.conf"
+alias free="free -m"
 
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
 
@@ -138,7 +139,14 @@ function _update_ps1() {
 export PROMPT_COMMAND="_update_ps1"
 #for hadoop
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/"
-export CLASSPATH=".:$JAVA_HOME/lib:/home/xudifsd/jar/*:/usr/share/java/clojure.jar:/home/xudifsd/hadoop-1.0.4/conf"
+CLASSPATH=".:$JAVA_HOME/lib:/usr/share/java/clojure.jar:/home/xudifsd/hadoop-1.0.4/conf"
+
+for i in ~/jar/*.jar
+do
+    CLASSPATH="$CLASSPATH:$i"
+done
+export CLASSPATH
+
 export PIG_CLASSPATH="/root/hadoop-1.0.4/conf:$JAVA_HOME/lib:/usr/share/java:."
 export PATH=$PATH:/home/xudifsd/hadoop-1.0.4/pig-0.11.1/bin:/home/xudifsd/hadoop-1.0.4/bin/
 
