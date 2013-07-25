@@ -22,6 +22,7 @@ set showcmd	"显示输入的命令
 set cursorline	"高亮所在行
 set cursorcolumn "高亮所在列
 set ignorecase smartcase
+set backspace=indent,eol,start "make backspace work like most other apps
 
 "There are so many times I realized that I don't need taglist when I start
 "So I comment out the following two lines, if you want to open a taglist
@@ -98,6 +99,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'EasyMotion'
+Bundle 'Valloric/YouCompleteMe'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -161,3 +163,6 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+
+"for you complete me plugin
+let g:ycm_global_ycm_extra_conf = '/home/xudifsd/bin/.ycm_extra_conf.py'
