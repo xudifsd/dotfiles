@@ -79,6 +79,10 @@ nnoremap <C-j> <C-W><C-j>
 nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
 
+"always use n for seach afterwards
+noremap <silent><expr>n v:searchforward ? "n" : "N"
+noremap <silent><expr>N v:searchforward ? "N" : "n"
+
 set splitbelow
 set splitright
 
