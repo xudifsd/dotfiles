@@ -117,7 +117,7 @@ Bundle 'https://github.com/tpope/vim-surround'
 " ...
 
 "for nerdTree
-map <C-l> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 filetype plugin indent on     " required!
