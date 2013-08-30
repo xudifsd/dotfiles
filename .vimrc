@@ -112,7 +112,13 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git://github.com/Lokaltog/powerline.git'
 Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
+Bundle 'https://github.com/scrooloose/nerdtree'
+Bundle 'https://github.com/tpope/vim-surround'
 " ...
+
+"for nerdTree
+map <C-l> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 filetype plugin indent on     " required!
 "
