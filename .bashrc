@@ -107,6 +107,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # add by xudifsd
+# for mac
+export CLICOLOR=1
+export GREP_OPTIONS="--color=auto"
+if [ -d ~/bin ]; then
+    export PATH=$PATH:~/bin
+fi
+
 export EDITOR=vim
 alias vi='vim'
 alias sudo='sudo '	#makes you could use config of your own
@@ -133,40 +140,14 @@ export MAIL=/var/spool/mail/xudifsd
 
 #using powerline plugin in bash prompt
 function _update_ps1() {
-	export PS1="$(/home/xudifsd/dev/powerline-shell/powerline-shell.py $?)"
+	export PS1="$(/Users/xudifsd/dev/powerline-shell/powerline-shell.py $?)"
 }
 
 export PROMPT_COMMAND="_update_ps1"
-#for hadoop
-export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/"
-CLASSPATH=".:$JAVA_HOME/lib:/usr/share/java/clojure.jar:/home/xudifsd/hadoop-1.0.4/conf"
-
-for i in ~/jar/*.jar
-do
-    CLASSPATH="$CLASSPATH:$i"
-done
-export CLASSPATH
-
-export PIG_CLASSPATH="/root/hadoop-1.0.4/conf:$JAVA_HOME/lib:/usr/share/java:."
-export PATH=$PATH:/home/xudifsd/hadoop-1.0.4/pig-0.11.1/bin:/home/xudifsd/hadoop-1.0.4/bin/
 
 #for http://www.vanheusden.com/httping/
 alias httping='httping -S -Y -Z -s --offset-yellow 370 --offset-red 380'
 
-set -o vi #use vi mode
-bind -m vi-insert '\c-l':clear-screen
-bind -m vi-insert '\c-x':vi-movement-mode
-bind -m vi-insert '\c-e':end-of-line
-bind -m vi-insert '\c-a':beginning-of-line
-bind -m vi-insert '\c-b':backward-char
-bind -m vi-insert '\c-f':forward-char
-
 alias xclip="xclip -selection c"
 
-#add for coursera compiler
-export PATH=/usr/class/cs143/cool/bin:$PATH
-
-alias octave="octave -q"
-alias work="ssh xudi@admaster-server"
-alias pull="scp xudi@admaster-server:HD/output/*.csv output/ && ssh xudi@admaster-server rm HD/output/*.csv"
-[[ -z "$TMUX" ]] && exec tmux -2
+[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf

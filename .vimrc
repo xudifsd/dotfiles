@@ -7,7 +7,7 @@ set nocp	"不以模拟vi方式运行
 set number	"显示行号
 set cindent	"在C语言中自动缩进
 set autoindent	"自动缩进（下一行与当前行缩进一样）
-"set expandtab "使用space代替tab
+set expandtab "使用space代替tab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
 set background=dark "设置背景为黑
@@ -17,7 +17,7 @@ if has('mouse')	"在全模式下使用鼠标
 endif
 set incsearch	"快速查找
 set hlsearch	"高亮搜索字
-set scrolloff=100	"保持与上下10行的间距
+set scrolloff=100	"保持与上下100行的间距
 set showcmd	"显示输入的命令
 set cursorline	"高亮所在行
 set cursorcolumn "高亮所在列
@@ -37,6 +37,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 "colorscheme molokai
 "colorscheme solarized
+colorscheme peachpuff
 set t_Co=256
 
 "一些自动命令
@@ -103,7 +104,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'EasyMotion'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
