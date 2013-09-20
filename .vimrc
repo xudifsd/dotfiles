@@ -56,6 +56,8 @@ augroup Program
 	autocmd BufNewFile *.html 0r ~/Templates/html
 	autocmd BufNewFile *.py 0r ~/Templates/python
 	autocmd BufNewFile *.c 0r ~/Templates/c
+	autocmd BufNewFile *.tex 0r ~/Templates/latex
+	autocmd BufNewFile *.cjk 0r ~/Templates/latex
 augroup END
 
 nmap <leader>md :%!md2html --html4tags <cr>
@@ -64,6 +66,7 @@ augroup filetypedetect
 	au BufRead,BufNewFile *.clj set filetype=clojure
 	au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 	au BufNewFile,BufRead *.cl set filetype=cool
+    au BufNewFile,BufRead *.cjk set filetype=tex
 augroup END
 
 map ; :
@@ -175,6 +178,3 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 set pastetoggle=<F4>
-
-"for you complete me plugin
-let g:ycm_global_ycm_extra_conf = '/home/xudifsd/bin/.ycm_extra_conf.py'
