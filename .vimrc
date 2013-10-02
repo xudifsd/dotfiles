@@ -67,6 +67,7 @@ augroup filetypedetect
 	au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 	au BufNewFile,BufRead *.cl set filetype=cool
     au BufNewFile,BufRead *.cjk set filetype=tex
+    au BufNewFile,BufRead Vagrantfile set filetype=ruby
 augroup END
 
 map ; :
