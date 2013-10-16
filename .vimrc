@@ -71,6 +71,8 @@ augroup filetypedetect
 augroup END
 
 map ; :
+"makes editing chinese easier
+map ； :
 map <Up> g<Up>
 map <Down> g<Down>
 imap <Up> <Esc>g<Up>a
