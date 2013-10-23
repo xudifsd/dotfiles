@@ -113,6 +113,9 @@ export GREP_OPTIONS="--color=auto"
 if [ -d ~/bin ]; then
     export PATH=$PATH:~/bin
 fi
+if [ -f ~/.git-completion.sh ];then
+    source ~/.git-completion.sh
+fi
 
 export EDITOR=vim
 alias vi='vim'
@@ -144,6 +147,7 @@ function _update_ps1() {
 }
 
 export PROMPT_COMMAND="_update_ps1"
+export CLASSPATH=".:/usr/local/share/java/zmq.jar"
 
 #for http://www.vanheusden.com/httping/
 alias httping='httping -S -Y -Z -s --offset-yellow 370 --offset-red 380'

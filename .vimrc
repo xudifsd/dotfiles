@@ -10,6 +10,7 @@ set autoindent	"自动缩进（下一行与当前行缩进一样）
 set expandtab "使用space代替tab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
+set softtabstop=4
 set background=dark "设置背景为黑
 set nobackup	"不生成备份文件
 if has('mouse')	"在全模式下使用鼠标
@@ -23,6 +24,11 @@ set cursorline	"高亮所在行
 set cursorcolumn "高亮所在列
 set ignorecase smartcase
 set backspace=indent,eol,start "make backspace work like most other apps
+set list!
+set list listchars=tab:»·,trail:·
+
+" for when we forget to use sudo to open/edit a file
+cmap w!! w !sudo tee % >/dev/null
 
 "There are so many times I realized that I don't need taglist when I start
 "So I comment out the following two lines, if you want to open a taglist
