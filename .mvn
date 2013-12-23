@@ -90,3 +90,12 @@ $ mvn install assembly:assembly
     </plugins>
     [...]
 </build>
+
+#skip test
+mvn install -Dmaven.test.skip=true
+
+#install local jar
+mvn install:install-file -DgroupId=org.apache.maven.surefire -DartifactId=surefire-junit3 -Dversion=2.12.4 -Dpackaging=jar -Dfile=/Users/xudifsd/Downloads/surefire-junit3-2.12.4.jar
+
+#push to clojars
+scp pom.xml myjar-1.0.jar clojars@clojars.org:

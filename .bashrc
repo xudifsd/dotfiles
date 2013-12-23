@@ -147,11 +147,19 @@ function _update_ps1() {
 }
 
 export PROMPT_COMMAND="_update_ps1"
-export CLASSPATH=".:/usr/local/share/java/zmq.jar"
+export CLASSPATH=".:/Users/xudifsd/bin/antlr-3.2.jar:/Users/xudifsd/bin/apktool.jar:/Users/xudifsd/bin/dx.jar:/Users/xudifsd/bin/baksmali-2.0.2.jar:/Users/xudifsd/bin/smali.jar:/Users/xudifsd/bin/clojure-1.5.1.jar"
 
 #for http://www.vanheusden.com/httping/
 alias httping='httping -S -Y -Z -s --offset-yellow 370 --offset-red 380'
 
 alias xclip="xclip -selection c"
+alias jcc="java -jar ~/bin/jasmin.jar"
+alias smali="java -jar ~/bin/smali.jar"
+alias baksmali="java -jar ~/bin/baksmali-2.0.2.jar"
+alias dx="java -jar ~/bin/dx.jar --dex"
+alias antlr="java org.antlr.Tool"
+alias javac="javac -J-Dfile.encoding=UTF-8"
 
-[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
+# sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
+
+#[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
