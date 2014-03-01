@@ -8,14 +8,12 @@ set number	"显示行号
 set cindent	"在C语言中自动缩进
 set autoindent	"自动缩进（下一行与当前行缩进一样）
 set expandtab "使用space代替tab
+au fileType java set noexpandtab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
 set softtabstop=4
-set background=dark "设置背景为黑
+set background=light "设置背景
 set nobackup	"不生成备份文件
-if has('mouse')	"在全模式下使用鼠标
-  set mouse=a
-endif
 set incsearch	"快速查找
 set hlsearch	"高亮搜索字
 set scrolloff=100	"保持与上下100行的间距
@@ -42,8 +40,8 @@ set undolevels=1000 "可被undo的次数
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 "colorscheme molokai
-"colorscheme solarized
-colorscheme peachpuff
+colorscheme solarized
+"colorscheme peachpuff
 set t_Co=256
 
 "一些自动命令
@@ -62,6 +60,7 @@ augroup Program
 	autocmd BufNewFile *.html 0r ~/Templates/html
 	autocmd BufNewFile *.py 0r ~/Templates/python
 	autocmd BufNewFile *.c 0r ~/Templates/c
+	autocmd BufNewFile *.java 0r ~/Templates/java
 	autocmd BufNewFile *.tex 0r ~/Templates/latex
 	autocmd BufNewFile *.cjk 0r ~/Templates/latex
 augroup END
@@ -69,8 +68,7 @@ augroup END
 nmap <leader>md :%!md2html --html4tags <cr>
 augroup filetypedetect
 	au BufRead,BufNewFile *.md set filetype=markdown
-	au BufRead,BufNewFile *.clj set filetype=clojure
-	au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+"	au BufRead,BufNewFile *.clj set filetype=clojure
 	au BufNewFile,BufRead *.cl set filetype=cool
     au BufNewFile,BufRead *.cjk set filetype=tex
     au BufNewFile,BufRead Vagrantfile set filetype=ruby
@@ -127,13 +125,27 @@ Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/scrooloose/nerdtree'
 Bundle 'https://github.com/tpope/vim-surround'
+"Bundle 'amdt/vim-niji'
 " ...
 
 "for nerdTree
 map <C-m> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-filetype plugin indent on     " required!
+filetype plugin indent on     " required by vimclojure
+let g:vimclojure#ParenRainbow=8
+"let vimclojure#ParenRainbowColors = {
+"				\ '1': 'guifg=blue',
+"				\ '2': 'guifg=purple',
+"				\ '3': 'guifg=green',
+"				\ '4': 'guifg=brown',
+"				\ '5': 'guifg=cyan',
+"				\ '6': 'guifg=darkred',
+"				\ '7': 'guifg=gray',
+"				\ '8': 'guifg=red',
+"				\ '9': 'guifg=magenta',
+"				\ '10': 'guifg=black',
+"				\ }
 "
 " Brief help
 " :BundleList          - list configured bundles
@@ -149,31 +161,6 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 let g:Powerline_theme='short'
 let g:Powerline_colorscheme='solarized256'
 set laststatus=2
-
-augroup for_pig
-	autocmd FileType pig abbreviate pigstorage PigStorage
-	autocmd FileType pig abbreviate count COUNT
-	autocmd FileType pig abbreviate sum SUM
-	autocmd FileType pig abbreviate flatten FLATTEN
-	autocmd FileType pig abbreviate load LOAD
-	autocmd FileType pig abbreviate group GROUP
-	autocmd FileType pig abbreviate using USING
-	autocmd FileType pig abbreviate as AS
-	autocmd FileType pig abbreviate by BY
-	autocmd FileType pig abbreviate distinct DISTINCT
-	autocmd FileType pig abbreviate generate GENERATE
-	autocmd FileType pig abbreviate foreach FOREACH
-	autocmd FileType pig abbreviate dump DUMP
-	autocmd FileType pig abbreviate store STORE
-	autocmd FileType pig abbreviate union UNION
-	autocmd FileType pig abbreviate cogroup COGROUP
-	autocmd FileType pig abbreviate cross CROSS
-	autocmd FileType pig abbreviate describe DESCRIBE
-	autocmd FileType pig abbreviate filter FILTER
-	autocmd FileType pig abbreviate order ORDER
-	autocmd FileType pig abbreviate join JOIN
-	autocmd FileType pig abbreviate limit LIMIT
-augroup END
 
 "for CtrlP
 noremap <C-W><C-U> :CtrlPMRU<CR>
