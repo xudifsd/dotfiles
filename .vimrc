@@ -83,12 +83,15 @@ imap <Up> <Esc>g<Up>a
 imap <Down> <Esc>g<Down>a
 
 "makes it easier when in multi-window
-nnoremap <C-Up> <C-W><C-Up>
-nnoremap <C-Down> <C-W><C-Down>
 nnoremap <C-h> <C-W><C-h>
 nnoremap <C-j> <C-W><C-j>
 nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
+
+nnoremap == :resize +2<CR>
+nnoremap -- :resize -2<CR>
+nnoremap ++ :vertical resize +2<CR>
+nnoremap __ :vertical resize -2<CR>
 
 "always use n for seach afterwards
 noremap <silent><expr>n v:searchforward ? "n" : "N"
@@ -125,6 +128,7 @@ Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/scrooloose/nerdtree'
 Bundle 'https://github.com/tpope/vim-surround'
+"Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...
 
