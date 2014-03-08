@@ -93,6 +93,8 @@ nnoremap -- :resize -2<CR>
 nnoremap ++ :vertical resize +2<CR>
 nnoremap __ :vertical resize -2<CR>
 
+vmap f zf
+
 "always use n for seach afterwards
 noremap <silent><expr>n v:searchforward ? "n" : "N"
 noremap <silent><expr>N v:searchforward ? "N" : "n"
