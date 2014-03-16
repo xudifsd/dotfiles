@@ -180,3 +180,23 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 set pastetoggle=<F4>
+
+function! MarkPush()
+    if !exists("g:markStack")
+        let g:markStack = []
+    endif
+    call insert(g:markStack, line("."))
+endfunction
+
+function! MarkPop()
+    if !exists("g:markStack") || len(g:markStack) == 0
+        echo "empty stack!"
+        return
+    endif
+    let lineno = g:markStack[0]
+    call remove(g:markStack, 0)
+    exec 'silent ' . lineno
+endfunction
+
+map mm :call MarkPush()<CR>
+map 'm :call MarkPop()<CR>
