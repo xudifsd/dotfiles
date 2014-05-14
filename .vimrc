@@ -82,6 +82,9 @@ map <Down> g<Down>
 imap <Up> <Esc>g<Up>a
 imap <Down> <Esc>g<Down>a
 
+imap <C-a> <Esc>0i
+imap <C-e> <Esc>$a
+
 "makes it easier when in multi-window
 nnoremap <C-h> <C-W><C-h>
 nnoremap <C-j> <C-W><C-j>
@@ -200,3 +203,9 @@ endfunction
 
 map mm :call MarkPush()<CR>
 map 'm :call MarkPop()<CR>
+
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on

@@ -158,8 +158,12 @@ alias smali="java -jar ~/bin/smali.jar"
 alias baksmali="java -jar ~/bin/baksmali-2.0.2.jar"
 alias dx="java -jar ~/bin/dx.jar --dex"
 alias antlr="java org.antlr.Tool"
-alias javac="javac -J-Dfile.encoding=UTF-8"
+alias jdb="rlwrap jdb"
+alias cdc="cd /Users/xudifsd/dev/core.typed"
 
 # sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
 
+export PATH=$PATH:/Users/xudifsd/Downloads/adt-bundle-mac-x86_64-20131030/sdk/build-tools/android-4.4:/Users/xudifsd/dev/z3/build
+export LC_ALL=en_US.UTF-8
+export GOROOT=/usr/local/go
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
