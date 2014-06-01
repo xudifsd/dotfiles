@@ -166,4 +166,9 @@ alias cdc="cd /Users/xudifsd/dev/core.typed"
 export PATH=$PATH:/Users/xudifsd/Downloads/adt-bundle-mac-x86_64-20131030/sdk/build-tools/android-4.4:/Users/xudifsd/dev/z3/build
 export LC_ALL=en_US.UTF-8
 export GOROOT=/usr/local/go
+
+if [ -f `brew --prefix`/etc/bash_completion.d/go ]; then
+    source `brew --prefix`/etc/bash_completion.d/go
+fi
+
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
