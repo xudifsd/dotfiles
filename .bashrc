@@ -160,6 +160,7 @@ alias dx="java -jar ~/bin/dx.jar --dex"
 alias antlr="java org.antlr.Tool"
 alias jdb="rlwrap jdb"
 alias cdc="cd /Users/xudifsd/dev/core.typed"
+alias fuck='sudo $(history -p \!\!)'
 
 # sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
 

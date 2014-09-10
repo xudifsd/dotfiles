@@ -204,6 +204,9 @@ endfunction
 map mm :call MarkPush()<CR>
 map 'm :call MarkPop()<CR>
 
+map <C-e> $
+map <C-a> 0
+
 filetype off
 filetype plugin indent off
 set runtimepath+=$GOROOT/misc/vim
