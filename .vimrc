@@ -63,6 +63,7 @@ augroup Program
 	autocmd BufNewFile *.java 0r ~/Templates/java
 	autocmd BufNewFile *.tex 0r ~/Templates/latex
 	autocmd BufNewFile *.cjk 0r ~/Templates/latex
+	autocmd BufNewFile *.erl 0r ~/Templates/erlang
 augroup END
 
 nmap <leader>md :%!md2html --html4tags <cr>
@@ -133,6 +134,7 @@ Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/scrooloose/nerdtree'
 Bundle 'https://github.com/tpope/vim-surround'
+Bundle 'https://github.com/jimenezrick/vimerl'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...
