@@ -135,6 +135,7 @@ Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/scrooloose/nerdtree'
 Bundle 'https://github.com/tpope/vim-surround'
 Bundle 'https://github.com/jimenezrick/vimerl'
+Bundle 'https://github.com/vim-scripts/VimClojure'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...

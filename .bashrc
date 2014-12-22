@@ -143,7 +143,7 @@ export MAIL=/var/spool/mail/xudifsd
 
 #using powerline plugin in bash prompt
 function _update_ps1() {
-	export PS1="$(/Users/xudifsd/dev/powerline-shell/powerline-shell.py $?)"
+	export PS1="$(/home/vagrant/dev/powerline-shell/powerline-shell.py $?)"
 }
 
 export PROMPT_COMMAND="_update_ps1"
@@ -161,6 +161,9 @@ alias antlr="java org.antlr.Tool"
 alias jdb="rlwrap jdb"
 alias cdc="cd /Users/xudifsd/dev/core.typed"
 alias fuck='sudo $(history -p \!\!)'
+alias cds='cd ~/dev/snitch'
+alias cdn='cd ~/dev/nimbus'
+alias cdp='cd ~/dev/pensieve'
 
 # sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
 
