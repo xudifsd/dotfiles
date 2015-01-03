@@ -48,30 +48,31 @@ set t_Co=256
 if has("autocmd")	"让光标指向上次编辑的位置
    autocmd BufRead *.txt set tw=78
    autocmd BufReadPost *
-	 \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-	 \   exe "normal g'\"" |
-	 \ endif
+   \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+   \   exe "normal g'\"" |
+   \ endif
 endif
 
 autocmd filetype lisp,scheme,art setlocal equalprg=indent.lisp
 
 "运行自动命令
 augroup Program
-	autocmd BufNewFile *.html 0r ~/Templates/html
-	autocmd BufNewFile *.py 0r ~/Templates/python
-	autocmd BufNewFile *.c 0r ~/Templates/c
-	autocmd BufNewFile *.java 0r ~/Templates/java
-	autocmd BufNewFile *.tex 0r ~/Templates/latex
-	autocmd BufNewFile *.cjk 0r ~/Templates/latex
-	autocmd BufNewFile *.erl 0r ~/Templates/erlang
+    autocmd BufNewFile *.html 0r ~/Templates/html
+    autocmd BufNewFile *.py 0r ~/Templates/python
+    autocmd BufNewFile *.c 0r ~/Templates/c
+    autocmd BufNewFile *.java 0r ~/Templates/java
+    autocmd BufNewFile *.tex 0r ~/Templates/latex
+    autocmd BufNewFile *.cjk 0r ~/Templates/latex
+    autocmd BufNewFile *.erl 0r ~/Templates/erlang
 augroup END
 
 nmap <leader>md :%!md2html --html4tags <cr>
 augroup filetypedetect
-	au BufRead,BufNewFile *.md set filetype=markdown
-"	au BufRead,BufNewFile *.clj set filetype=clojure
-	au BufNewFile,BufRead *.cl set filetype=cool
+    au BufRead,BufNewFile *.md set filetype=markdown
+    "au BufRead,BufNewFile *.clj set filetype=clojure
+    au BufNewFile,BufRead *.cl set filetype=cool
     au BufNewFile,BufRead *.cjk set filetype=tex
+    au BufNewFile,BufRead *.scala set filetype=scala
     au BufNewFile,BufRead Vagrantfile set filetype=ruby
 augroup END
 
@@ -136,6 +137,7 @@ Bundle 'https://github.com/scrooloose/nerdtree'
 Bundle 'https://github.com/tpope/vim-surround'
 Bundle 'https://github.com/jimenezrick/vimerl'
 Bundle 'https://github.com/vim-scripts/VimClojure'
+Bundle 'derekwyatt/vim-scala'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...
