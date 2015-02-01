@@ -138,6 +138,7 @@ Bundle 'https://github.com/tpope/vim-surround'
 Bundle 'https://github.com/jimenezrick/vimerl'
 Bundle 'https://github.com/vim-scripts/VimClojure'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'kchmck/vim-coffee-script'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...
