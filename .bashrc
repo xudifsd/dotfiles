@@ -147,7 +147,6 @@ function _update_ps1() {
 }
 
 export PROMPT_COMMAND="_update_ps1"
-export CLASSPATH=".:/Users/xudifsd/bin/antlr-3.2.jar:/Users/xudifsd/bin/apktool.jar:/Users/xudifsd/bin/dx.jar:/Users/xudifsd/bin/baksmali-2.0.2.jar:/Users/xudifsd/bin/smali.jar:/Users/xudifsd/bin/clojure-1.5.1.jar"
 
 #for http://www.vanheusden.com/httping/
 alias httping='httping -S -Y -Z -s --offset-yellow 370 --offset-red 380'
@@ -164,6 +163,14 @@ alias fuck='sudo $(history -p \!\!)'
 alias cds='cd ~/dev/snitch'
 alias cdn='cd ~/dev/nimbus'
 alias cdp='cd ~/dev/pensieve'
+
+function stop_nrepl {
+    kill -SIGKILL `lsof -i:16180 | tail -n 1 | awk '{printf "%s\n",$2}'`
+}
+
+alias nrepl='nohup lein repl :headless :port 16180 > /tmp/nrepl-out 2>&1 &'
+alias repl='lein repl :connect 16180'
+alias nstop='stop_nrepl'
 
 # sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
 
