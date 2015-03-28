@@ -133,19 +133,24 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git://github.com/Lokaltog/powerline.git'
 Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
-Bundle 'https://github.com/scrooloose/nerdtree'
+"Bundle 'https://github.com/scrooloose/nerdtree'
 Bundle 'https://github.com/tpope/vim-surround'
 Bundle 'https://github.com/jimenezrick/vimerl'
 Bundle 'https://github.com/vim-scripts/VimClojure'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'junegunn/vim-easy-align'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...
 
+" for vim-easy-align
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 "for nerdTree
-map <C-m> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <C-m> :NERDTreeToggle<CR>
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 filetype plugin indent on     " required by vimclojure
 let g:vimclojure#ParenRainbow=8
