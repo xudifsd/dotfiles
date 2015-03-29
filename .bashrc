@@ -172,6 +172,8 @@ alias nrepl='nohup lein repl :headless :port 16180 > /tmp/nrepl-out 2>&1 &'
 alias repl='lein repl :connect 16180'
 alias nstop='stop_nrepl'
 
+alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
+
 # sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
 
 export PATH=$PATH:/Users/xudifsd/Downloads/adt-bundle-mac-x86_64-20131030/sdk/build-tools/android-4.4:/Users/xudifsd/dev/z3/build
