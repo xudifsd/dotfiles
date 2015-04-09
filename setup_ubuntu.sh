@@ -3,6 +3,9 @@
 # this bash is used to setup basic development env quickly, it trys to as
 # more parallel as possible
 
+# use via
+# bash < <(curl -sL https://raw.githubusercontent.com/xudifsd/dotfile/master/setup_ubuntu.sh)
+
 # from http://stackoverflow.com/a/1127675/845762
 anywait() {
     for pid in "$@"; do
