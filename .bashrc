@@ -143,7 +143,7 @@ export MAIL=/var/spool/mail/xudifsd
 
 #using powerline plugin in bash prompt
 function _update_ps1() {
-	export PS1="$(/home/vagrant/dev/powerline-shell/powerline-shell.py $?)"
+	export PS1="$(~/dev/powerline-shell/powerline-shell.py $?)"
 }
 
 export PROMPT_COMMAND="_update_ps1"
@@ -172,6 +172,9 @@ alias nrepl='nohup lein repl :headless :port 16180 > /tmp/nrepl-out 2>&1 &'
 alias repl='lein repl :connect 16180'
 alias nstop='stop_nrepl'
 
+# https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
+alias tmux='TERM=xterm-256color tmux'
+
 alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
 
 # sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
@@ -180,8 +183,8 @@ export PATH=$PATH:/Users/xudifsd/Downloads/adt-bundle-mac-x86_64-20131030/sdk/bu
 export LC_ALL=en_US.UTF-8
 export GOROOT=/usr/local/go
 
-if [ -f `brew --prefix`/etc/bash_completion.d/go ]; then
-    source `brew --prefix`/etc/bash_completion.d/go
-fi
+#if [ -f `brew --prefix`/etc/bash_completion.d/go ]; then
+#    source `brew --prefix`/etc/bash_completion.d/go
+#fi
 
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
