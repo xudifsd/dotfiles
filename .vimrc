@@ -24,6 +24,7 @@ set ignorecase smartcase
 set backspace=indent,eol,start "make backspace work like most other apps
 set list!
 set list listchars=tab:»·,trail:·
+set tags=tags; "also search tags in parent dir
 
 " for when we forget to use sudo to open/edit a file
 cmap w!! w !sudo tee % >/dev/null
