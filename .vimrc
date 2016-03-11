@@ -20,7 +20,7 @@ set scrolloff=100	"保持与上下100行的间距
 set showcmd	"显示输入的命令
 set cursorline	"高亮所在行
 set cursorcolumn "高亮所在列
-set ignorecase smartcase
+set smartcase
 set backspace=indent,eol,start "make backspace work like most other apps
 set list!
 set list listchars=tab:»·,trail:·
@@ -141,6 +141,7 @@ Bundle 'https://github.com/vim-scripts/VimClojure'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'altercation/vim-colors-solarized'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...
