@@ -190,7 +190,6 @@ alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
 
 # sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
 
-export PATH=$PATH:/Users/xudifsd/Downloads/adt-bundle-mac-x86_64-20131030/sdk/build-tools/android-4.4:/Users/xudifsd/dev/z3/build
 export LC_ALL=en_US.UTF-8
 export GOROOT=/usr/local/go
 

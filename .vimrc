@@ -8,7 +8,7 @@ set number	"显示行号
 set cindent	"在C语言中自动缩进
 set autoindent	"自动缩进（下一行与当前行缩进一样）
 set expandtab "使用space代替tab
-au fileType java set noexpandtab
+"au fileType java set noexpandtab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
 set softtabstop=4
@@ -142,6 +142,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'rust-lang/rust.vim'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 " ...
