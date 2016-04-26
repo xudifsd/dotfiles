@@ -143,7 +143,9 @@ export MAIL=/var/spool/mail/xudifsd
 
 #using powerline plugin in bash prompt
 function _update_ps1() {
-	export PS1="$(~/dev/powerline-shell/powerline-shell.py $?)"
+    export PS1="$(~/dev/powerline-shell/powerline-shell.py $?)"
+    # http://unix.stackexchange.com/a/104278/167587 for tmux
+    PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 }
 
 export PROMPT_COMMAND="_update_ps1"
@@ -193,8 +195,13 @@ alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
 export LC_ALL=en_US.UTF-8
 export GOROOT=/usr/local/go
 
+# online dev machine usually set screen prefix as ctrl-a, this conflict with
+# `go to start of line` in emacs mode, so better change it into vi mode
+# set -o vi
+
 #if [ -f `brew --prefix`/etc/bash_completion.d/go ]; then
 #    source `brew --prefix`/etc/bash_completion.d/go
 #fi
 
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
+[[ -s "/home/xudi/.jumbo/etc/bashrc" ]] && source "/home/xudi/.jumbo/etc/bashrc"
