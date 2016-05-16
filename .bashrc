@@ -190,6 +190,7 @@ alias tmuxa='tmux attach-session'
 
 # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
 alias tmux='TERM=xterm-256color tmux'
+alias ssh='TERM=xterm ssh'
 
 alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
 
