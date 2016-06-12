@@ -145,6 +145,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'rust-lang/rust.vim'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
+Bundle 'wakatime/vim-wakatime'
 " ...
 
 " for vim-easy-align
