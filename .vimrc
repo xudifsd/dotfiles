@@ -87,6 +87,7 @@ imap <Down> <Esc>g<Down>a
 
 imap <C-a> <Esc>0i
 imap <C-e> <Esc>$a
+imap <C-1> <Esc>
 
 "makes it easier when in multi-window
 nnoremap <C-h> <C-W><C-h>
