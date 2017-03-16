@@ -185,8 +185,9 @@ alias ,,,,,,,,='cd ../../../../../../../..'
 alias ,,,,,,,,,='cd ../../../../../../../../..'
 alias ,,,,,,,,,,='cd ../../../../../../../../../..'
 
-alias tmuxl='tmux list-session'
-alias tmuxa='tmux attach-session'
+# http://stackoverflow.com/a/30370259/845762
+alias tmuxl='for i in `ps aux | grep -w [t]mux | awk "{print $2}"` ; do kill -USR1 $i ; done ; tmux list-session'
+alias tmuxa='for i in `ps aux | grep -w [t]mux | awk "{print $2}"` ; do kill -USR1 $i ; done ; tmux attach-session'
 
 # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
 alias tmux='TERM=xterm-256color tmux'
