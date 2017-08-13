@@ -60,6 +60,7 @@ autocmd filetype lisp,scheme,art setlocal equalprg=indent.lisp
 augroup Program
     autocmd BufNewFile *.html 0r ~/Templates/html
     autocmd BufNewFile *.py 0r ~/Templates/python
+    autocmd BufNewFile *.py :r !echo '\#' `date`
     autocmd BufNewFile *.c 0r ~/Templates/c
     autocmd BufNewFile *.java 0r ~/Templates/java
     autocmd BufNewFile *.tex 0r ~/Templates/latex
