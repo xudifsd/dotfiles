@@ -143,12 +143,12 @@ export MAIL=/var/spool/mail/xudifsd
 
 #using powerline plugin in bash prompt
 function _update_ps1() {
-    export PS1="$(~/dev/powerline-shell/powerline-shell.py $?)"
-    # http://unix.stackexchange.com/a/104278/167587 for tmux
-    PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+    PS1=$(powerline-shell $?)
 }
 
-export PROMPT_COMMAND="_update_ps1"
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 #for http://www.vanheusden.com/httping/
 alias httping='httping -S -Y -Z -s --offset-yellow 370 --offset-red 380'
@@ -186,8 +186,8 @@ alias ,,,,,,,,,='cd ../../../../../../../../..'
 alias ,,,,,,,,,,='cd ../../../../../../../../../..'
 
 # http://stackoverflow.com/a/30370259/845762
-alias tmuxl='for i in `ps aux | grep -w [t]mux | awk "{print $2}"` ; do kill -USR1 $i ; done ; tmux list-session'
-alias tmuxa='for i in `ps aux | grep -w [t]mux | awk "{print $2}"` ; do kill -USR1 $i ; done ; tmux attach-session'
+alias tmuxl='tmux list-session'
+alias tmuxa='tmux attach-session'
 
 # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
 alias tmux='TERM=xterm-256color tmux'
@@ -209,4 +209,6 @@ export GOROOT=/usr/local/go
 #fi
 
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
-[[ -s "/home/xudi/.jumbo/etc/bashrc" ]] && source "/home/xudi/.jumbo/etc/bashrc"
+export TMUX_POWERLINE_SEG_WEATHER_LOCATION=2151330
+
+[[ -s /home/dixu/.autojump/etc/profile.d/autojump.sh ]] && source /home/dixu/.autojump/etc/profile.d/autojump.sh

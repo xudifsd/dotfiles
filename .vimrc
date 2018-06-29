@@ -12,7 +12,7 @@ set expandtab "使用space代替tab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
 set softtabstop=4
-set background=light "设置背景
+set background=dark "设置背景
 set nobackup	"不生成备份文件
 set incsearch	"快速查找
 set hlsearch	"高亮搜索字
@@ -41,8 +41,8 @@ set undolevels=1000 "可被undo的次数
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 "colorscheme molokai
-colorscheme solarized
-"colorscheme peachpuff
+"colorscheme solarized
+colorscheme desert
 set t_Co=256
 
 "一些自动命令
@@ -110,9 +110,12 @@ noremap <silent><expr>N v:searchforward ? "N" : "n"
 set splitbelow
 set splitright
 
-set rtp+=~/.vim/bundle/vundle/
+set nocompatible              " be iMproved, required by vundle
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/powerline/bindings/vim
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
@@ -149,6 +152,8 @@ Bundle 'rust-lang/rust.vim'
 "Bundle 'amdt/vim-niji'
 Bundle 'wakatime/vim-wakatime'
 " ...
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " for vim-easy-align
 vmap <Enter> <Plug>(EasyAlign)
@@ -231,5 +236,5 @@ filetype plugin indent on
 syntax on
 
 "记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）
-"autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
-"autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
+autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
+autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
