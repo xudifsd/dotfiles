@@ -108,8 +108,8 @@ fi
 
 # add by xudifsd
 # for mac
-export CLICOLOR=1
-export GREP_OPTIONS="--color=auto"
+# export CLICOLOR=1
+# export GREP_OPTIONS="--color=auto"
 if [ -d ~/bin ]; then
     export PATH=$PATH:~/bin
 fi
