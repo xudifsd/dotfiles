@@ -86,25 +86,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
 
 # add by xudifsd
 # for mac
@@ -120,25 +101,10 @@ fi
 export EDITOR=vim
 alias vi='vim'
 alias sudo='sudo '	#makes you could use config of your own
-alias run='runjava.sh'	#make it's easy to compile java program and run it
-alias wget='wget -c --read-timeout=15 --tries=100'	#make wget download faster in slow Internet connection situation
-#alias curl='curl -C - -m 60 --retry 100'
 alias sig='ctags -R --c-kinds=+p --fields=+S .'	#code_complete will use tags to scan prototype of function
-alias csi='csi -quiet'	#make csi start without message
-alias clisp='clisp -q'	#make clisp start without message
-alias copychromecache='find .cache/google-chrome/Default/Cache -type f |\
-					  xargs file|\
-					  grep -v JPEG|grep -v ASCII | grep -v HTML|grep -v gzip|grep -v PNG|grep -v data | grep -v text|\
-					  cut -f1 -d ":"|\
-					  xargs copy_to_home_temp.sh'
-alias openvpn="sudo openvpn /etc/openvpn/vip.conf"
-alias free="free -m"
 
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
 
-export LD_LIBRARY_PATH=/usr/local/lib	#this is for libgit2
-export CHICKEN_DOC_REPOSITORY=/home/xudifsd/Downloads/chicken-doc/
-export CHICKEN_DOC_PAGER=less
 export MAIL=/var/spool/mail/xudifsd
 
 #using powerline plugin in bash prompt
@@ -154,25 +120,7 @@ fi
 alias httping='httping -S -Y -Z -s --offset-yellow 370 --offset-red 380'
 
 alias xclip="xclip -selection c"
-alias jcc="java -jar ~/bin/jasmin.jar"
-alias smali="java -jar ~/bin/smali.jar"
-alias baksmali="java -jar ~/bin/baksmali-2.0.2.jar"
-alias dx="java -jar ~/bin/dx.jar --dex"
-alias antlr="java org.antlr.Tool"
-alias jdb="rlwrap jdb"
-alias cdc="cd /Users/xudifsd/dev/core.typed"
 alias fuck='sudo $(history -p \!\!)'
-alias cds='cd ~/dev/snitch'
-alias cdn='cd ~/dev/nimbus'
-alias cdp='cd ~/dev/pensieve'
-
-function stop_nrepl {
-    kill -SIGKILL `lsof -i:16180 | tail -n 1 | awk '{printf "%s\n",$2}'`
-}
-
-alias nrepl='nohup lein repl :headless :port 16180 > /tmp/nrepl-out 2>&1 &'
-alias repl='lein repl :connect 16180'
-alias nstop='stop_nrepl'
 
 alias ,='cd ..'
 alias ,,='cd ../..'
@@ -195,20 +143,11 @@ alias ssh='TERM=xterm ssh'
 
 alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
 
-# sudo /Library/StartupItems/VirtualBox/VirtualBox restart#run this before vagrant up
-
 export LC_ALL=en_US.UTF-8
-export GOROOT=/usr/local/go
-
-# online dev machine usually set screen prefix as ctrl-a, this conflict with
-# `go to start of line` in emacs mode, so better change it into vi mode
-# set -o vi
-
-#if [ -f `brew --prefix`/etc/bash_completion.d/go ]; then
-#    source `brew --prefix`/etc/bash_completion.d/go
-#fi
+export GOROOT=~/golang
 
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
 export TMUX_POWERLINE_SEG_WEATHER_LOCATION=2151330
 
 [[ -s /home/dixu/.autojump/etc/profile.d/autojump.sh ]] && source /home/dixu/.autojump/etc/profile.d/autojump.sh
+source <(kubectl completion bash)
