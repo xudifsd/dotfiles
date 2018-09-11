@@ -16,6 +16,7 @@
     diffc = diff --cached
     diffw = diff --word-diff-regex=.
     ff = merge --ff-only
+    u = ls-files --others --exclude-standard
 [credential]
     helper = cache --timeout 86400
 [merge]

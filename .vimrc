@@ -114,7 +114,6 @@ set nocompatible              " be iMproved, required by vundle
 filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/powerline/bindings/vim
 call vundle#begin()
 
 " let Vundle manage Vundle
@@ -136,8 +135,6 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'git://github.com/Lokaltog/powerline.git'
-Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 "Bundle 'https://github.com/scrooloose/nerdtree'
 Bundle 'https://github.com/tpope/vim-surround'
@@ -151,9 +148,19 @@ Bundle 'rust-lang/rust.vim'
 "Bundle 'typedclojure/vim-typedclojure'
 "Bundle 'amdt/vim-niji'
 Bundle 'wakatime/vim-wakatime'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 " ...
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" for vim airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+:nnoremap <C-1> :1b<CR>
+:nnoremap <C-2> :2b<CR>
+:nnoremap <C-3> :3b<CR>
 
 " for vim-easy-align
 vmap <Enter> <Plug>(EasyAlign)
@@ -187,11 +194,6 @@ let g:vimclojure#ParenRainbow=8
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
 
-
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_theme='short'
-let g:Powerline_colorscheme='solarized256'
-set laststatus=2
 
 "for CtrlP
 noremap <C-W><C-U> :CtrlPMRU<CR>

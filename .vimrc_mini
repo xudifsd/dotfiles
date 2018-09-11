@@ -1,0 +1,117 @@
+filetype off
+if has("syntax")
+    syntax on
+endif
+set nocp
+set number
+set cindent
+set autoindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set background=dark
+set nobackup
+set incsearch
+set hlsearch
+set scrolloff=100
+set showcmd
+set cursorline
+set cursorcolumn
+set smartcase
+set backspace=indent,eol,start
+set list!
+set list listchars=tab:»·,trail:·
+set tags=tags; "also search tags in parent dir
+
+" for when we forget to use sudo to open/edit a file
+cmap w!! w !sudo tee % >/dev/null
+
+"There are so many times I realized that I don't need taglist when I start
+"So I comment out the following two lines, if you want to open a taglist
+"just type :TlistOpen
+"let Tlist_Auto_Open = 1
+let Tlist_Exit_OnlyWindow = 1
+
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
+colorscheme desert
+set t_Co=256
+
+if has("autocmd")
+   autocmd BufRead *.txt set tw=78
+   autocmd BufReadPost *
+   \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+   \   exe "normal g'\"" |
+   \ endif
+endif
+
+augroup filetypedetect
+    au BufRead,BufNewFile *.md set filetype=markdown
+    "au BufRead,BufNewFile *.clj set filetype=clojure
+    au BufNewFile,BufRead *.cl set filetype=cool
+    au BufNewFile,BufRead *.cjk set filetype=tex
+    au BufNewFile,BufRead *.scala set filetype=scala
+    au BufNewFile,BufRead Vagrantfile set filetype=ruby
+augroup END
+
+map ; :
+"makes editing chinese easier
+map ； :
+map <Up> g<Up>
+map <Down> g<Down>
+imap <Up> <Esc>g<Up>a
+imap <Down> <Esc>g<Down>a
+
+imap <C-a> <Esc>0i
+imap <C-e> <Esc>$a
+imap <C-1> <Esc>
+
+"makes it easier when in multi-window
+nnoremap <C-h> <C-W><C-h>
+nnoremap <C-j> <C-W><C-j>
+nnoremap <C-k> <C-W><C-k>
+nnoremap <C-l> <C-W><C-l>
+
+nnoremap == :resize +2<CR>
+nnoremap -- :resize -2<CR>
+nnoremap ++ :vertical resize +2<CR>
+nnoremap __ :vertical resize -2<CR>
+
+vmap f zf
+
+"always use n for seach afterwards
+noremap <silent><expr>n v:searchforward ? "n" : "N"
+noremap <silent><expr>N v:searchforward ? "N" : "n"
+
+set splitbelow
+set splitright
+
+function! MarkPush()
+    if !exists("g:markStack")
+        let g:markStack = []
+    endif
+    call insert(g:markStack, line("."))
+endfunction
+
+function! MarkPop()
+    if !exists("g:markStack") || len(g:markStack) == 0
+        echo "empty stack!"
+        return
+    endif
+    let lineno = g:markStack[0]
+    call remove(g:markStack, 0)
+    exec 'silent ' . lineno
+endfunction
+
+map mm :call MarkPush()<CR>
+map 'm :call MarkPop()<CR>
+
+map <C-e> $
+map <C-a> 0
+
+autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
+autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
