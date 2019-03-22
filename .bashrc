@@ -13,8 +13,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=100000
+HISTFILESIZE=200000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -145,6 +145,8 @@ alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
 
 export LC_ALL=en_US.UTF-8
 export GOROOT=~/golang
+export GOPATH=~/gopath
+export PATH=$PATH:$GOROOT/bin:$HOME/.cargo/bin
 
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
 export TMUX_POWERLINE_SEG_WEATHER_LOCATION=2151330

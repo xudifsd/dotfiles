@@ -66,6 +66,8 @@ augroup Program
     autocmd BufNewFile *.tex 0r ~/Templates/latex
     autocmd BufNewFile *.cjk 0r ~/Templates/latex
     autocmd BufNewFile *.erl 0r ~/Templates/erlang
+    autocmd BufNewFile *.rs 0r ~/Templates/rust
+    autocmd BufNewFile *.rs :0r !echo -e '//' `date`'\n'
 augroup END
 
 nmap <leader>md :%!md2html --html4tags <cr>
