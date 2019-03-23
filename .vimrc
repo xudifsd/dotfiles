@@ -120,38 +120,38 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" My Bundles here:
+" My Plugins here:
 "
 " original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-Bundle 'kien/ctrlp.vim'
-Bundle 'EasyMotion'
-"Bundle 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'tpope/vim-rails.git'
+Plugin 'kien/ctrlp.vim'
+Plugin 'EasyMotion'
+"Plugin 'Valloric/YouCompleteMe'
 " vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'https://github.com/terryma/vim-multiple-cursors'
-"Bundle 'https://github.com/scrooloose/nerdtree'
-Bundle 'https://github.com/tpope/vim-surround'
-Bundle 'https://github.com/jimenezrick/vimerl'
-Bundle 'https://github.com/vim-scripts/VimClojure'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'junegunn/vim-easy-align'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'rust-lang/rust.vim'
-"Bundle 'typedclojure/vim-typedclojure'
-"Bundle 'amdt/vim-niji'
-Bundle 'wakatime/vim-wakatime'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'https://github.com/terryma/vim-multiple-cursors'
+"Plugin 'https://github.com/scrooloose/nerdtree'
+Plugin 'https://github.com/tpope/vim-surround'
+Plugin 'https://github.com/jimenezrick/vimerl'
+Plugin 'https://github.com/vim-scripts/VimClojure'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'rust-lang/rust.vim'
+"Plugin 'typedclojure/vim-typedclojure'
+"Plugin 'amdt/vim-niji'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " ...
 call vundle#end()            " required
 filetype plugin indent on    " required
