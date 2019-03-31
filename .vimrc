@@ -12,7 +12,6 @@ set expandtab "使用space代替tab
 set tabstop=4	"设置tab键为4个空格
 set shiftwidth=4	"设置缩进空格数为4
 set softtabstop=4
-set background=dark "设置背景
 set nobackup	"不生成备份文件
 set incsearch	"快速查找
 set hlsearch	"高亮搜索字
@@ -43,6 +42,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 "colorscheme molokai
 "colorscheme solarized
 colorscheme desert
+set background=light "设置背景
 set t_Co=256
 
 "一些自动命令
@@ -232,6 +232,7 @@ map 'm :call MarkPop()<CR>
 
 map <C-e> $
 map <C-a> 0
+nmap <leader>now :r!date<CR>
 nmap <leader>c :%y+<CR> " https://stackoverflow.com/a/20912576/845762
 
 filetype off
