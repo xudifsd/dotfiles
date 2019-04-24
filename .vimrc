@@ -1,3 +1,5 @@
+scriptencoding utf-8
+set encoding=utf-8
 "编辑环境设置
 filetype off	"检测文件类型
 if has("syntax")	"开启语法高亮
