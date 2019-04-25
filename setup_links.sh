@@ -1,4 +1,5 @@
-dir=`dirname $0`
+shell_dir=`dirname $0`
+dir=`readlink -f $shell_dir`
 
 if [ -e ~/Templates ] ; then
     mv ~/Templates /tmp/bak_Templates
