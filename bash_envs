@@ -8,15 +8,6 @@ export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a sta
 
 export MAIL=/var/spool/mail/xudifsd
 
-#using powerline plugin in bash prompt
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
 export LC_ALL=en_US.UTF-8
 export GOROOT=~/golang
 export GOPATH=~/gopath
