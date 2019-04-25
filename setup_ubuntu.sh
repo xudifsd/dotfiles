@@ -4,7 +4,7 @@
 # more parallel as possible
 
 # use via
-# bash < <(curl -sL https://raw.githubusercontent.com/xudifsd/dotfile/master/setup_ubuntu.sh)
+# bash < <(curl -sL https://raw.githubusercontent.com/xudifsd/dotfiles/master/setup_ubuntu.sh)
 
 # from http://stackoverflow.com/a/1127675/845762
 anywait() {
@@ -59,17 +59,17 @@ sudo apt-get install -y git vim
 apt_get_pid=$!
 
 (
-    git clone https://github.com/xudifsd/dotfile.git ~/dev/dotfile
+    git clone https://github.com/xudifsd/dotfiles.git ~/dev/dotfiles
 
-    ln -sf ~/dev/dotfile/Templates ~/Templates
-    ln -f ~/dev/dotfile/.gitconfig ~/.gitconfig
+    ln -sf ~/dev/dotfiles/Templates ~/Templates
+    ln -f ~/dev/dotfiles/.gitconfig ~/.gitconfig
     mv ~/.bashrc{,.bak}
-    ln -f ~/dev/dotfile/.bashrc ~/.bashrc
-    ln -f ~/dev/dotfile/.vimrc ~/.vimrc
-    ln -f ~/dev/dotfile/.pythonstartup.py ~/.pythonstartup.py
-    > /tmp/clone_dotfile_done
+    ln -f ~/dev/dotfiles/.bashrc ~/.bashrc
+    ln -f ~/dev/dotfiles/.vimrc ~/.vimrc
+    ln -f ~/dev/dotfiles/.pythonstartup.py ~/.pythonstartup.py
+    > /tmp/clone_dotfiles_done
 ) &
-clone_dotfile_pid=$!
+clone_dotfiles_pid=$!
 
 (
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle

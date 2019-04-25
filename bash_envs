@@ -1,0 +1,26 @@
+if [ -d ~/bin ]; then
+    export PATH=$PATH:~/bin
+fi
+
+export EDITOR=vim
+
+export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
+
+export MAIL=/var/spool/mail/xudifsd
+
+#using powerline plugin in bash prompt
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+export LC_ALL=en_US.UTF-8
+export GOROOT=~/golang
+export GOPATH=~/gopath
+export PATH=$PATH:$GOROOT/bin:$HOME/.cargo/bin
+
+#[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
+export TMUX_POWERLINE_SEG_WEATHER_LOCATION=2151330

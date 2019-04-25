@@ -1,8 +1,0 @@
-google.com
-google.co.jp
-google.co.hk
-github.com
-wikipedia.org
-t.co
-twitter.com
-youtube.com
