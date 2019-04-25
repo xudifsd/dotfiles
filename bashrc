@@ -52,6 +52,7 @@ fi
 # from http://ezprompt.net/ with some modification
 # get current branch in git repo
 function parse_git_branch() {
+	rtn=$? # for parse_git_dirty
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 	if [ ! "${BRANCH}" == "" ]
 	then
@@ -67,6 +68,7 @@ function parse_git_branch() {
 	else
 		echo ""
 	fi
+	return $rtn
 }
 
 # get current status of git repo
@@ -104,8 +106,13 @@ function parse_git_dirty {
 	fi
 }
 
+function parse_exit_code() {
+	RET=$?
+	[ $RET -ne 0 ] && echo "\[\e[41m\]${RET}\[\e[0m\]"
+}
+
 # https://askubuntu.com/a/1012770/949536
-export PROMPT_COMMAND='PS1="\[\e[33m\]\A|\[\e[m\]\u@\h:\[\e[34m\]\w\[\e[m\]`parse_git_branch`\\$ "'
+export PROMPT_COMMAND='PS1="\[\e[33m\]\A|\[\e[m\]\u@\h:\[\e[34m\]\w\[\e[m\]`parse_git_branch``parse_exit_code`\\$ "'
 
 [[ -s ~/.bash_envs ]] && source ~/.bash_envs
 [[ -s ~/.bash_alias ]] && source ~/.bash_alias
