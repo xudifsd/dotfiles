@@ -57,50 +57,71 @@ function parse_git_branch() {
     if [ ! "${BRANCH}" == "" ]
     then
         STAT=`parse_git_dirty`
-        if [ "$STAT" == "" ]
-        then
-            BRANCH=`echo "\[\e[32m\]${BRANCH}\[\e[0m\]"`
+        REMOTE=`parse_git_remote`
+        if [ "$STAT" == "" ]; then
+            result=`echo "\[\e[32m\]${BRANCH}\[\e[0m\]"`
         else
-            BRANCH=`echo "\[\e[31m\]${BRANCH}\[\e[0m\]"`
-            STAT=`echo "\[\e[38;5;220m\]${STAT}\[\e[0m\]"`
+            result=`echo "\[\e[31m\]${BRANCH}\[\e[0m\]"`
+            result=`echo "${result}\[\e[38;5;214m\]${STAT}\[\e[0m\]"`
         fi
-        echo "[${BRANCH}${STAT}]"
+        if [ "$REMOTE" != "" ]; then
+            result=`echo "${result}\[\e[38;5;160m\]${REMOTE}\[\e[0m\]"`
+        fi
+        echo "[${result}]"
     else
         echo ""
     fi
     return $rtn
 }
 
+function parse_git_remote {
+    status=`git status 2>&1 | tee`
+    ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+    behind=`echo -n "${status}" 2> /dev/null | grep "Your branch is behind" &> /dev/null; echo "$?"`
+    diverged=`echo -n "${status}" 2> /dev/null | grep "Your branch and .* have diverged" &> /dev/null; echo "$?"`
+    bits=''
+    if [ "${ahead}" == "0" ]; then
+        bits="^${bits}"
+    fi
+    if [ "${behind}" == "0" ]; then
+        bits="v${bits}"
+    fi
+    if [ "${diverged}" == "0" ]; then
+        bits="≠${bits}"
+    fi
+    if [ ! "${bits}" == "" ]; then
+        echo "${bits}"
+    else
+        echo ""
+    fi
+}
+
 # get current status of git repo
 function parse_git_dirty {
     status=`git status 2>&1 | tee`
     dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
-    untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
-    ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
     newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
     renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
     deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+    untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
     bits=''
-    if [ "${renamed}" == "0" ]; then
-        bits=">${bits}"
-    fi
-    if [ "${ahead}" == "0" ]; then
-        bits="*${bits}"
+    if [ "${dirty}" == "0" ]; then
+        bits="!${bits}"
     fi
     if [ "${newfile}" == "0" ]; then
         bits="+${bits}"
     fi
-    if [ "${untracked}" == "0" ]; then
-        bits="?${bits}"
+    if [ "${renamed}" == "0" ]; then
+        bits=">${bits}"
     fi
     if [ "${deleted}" == "0" ]; then
         bits="x${bits}"
     fi
-    if [ "${dirty}" == "0" ]; then
-        bits="!${bits}"
+    if [ "${untracked}" == "0" ]; then
+        bits="?${bits}"
     fi
     if [ ! "${bits}" == "" ]; then
-        echo -e "${bits}"
+        echo "${bits}"
     else
         echo ""
     fi
@@ -113,13 +134,19 @@ function parse_exit_code() {
 
 function cut_path() {
     path=$1
+    with_leading=$2
 
     # http://mywiki.wooledge.org/BashFAQ/100#Removing_part_of_a_string
+    # first, remove from tail that matches /*/* to check if path contains at least two /
     prefix=${path%/*/*}
     result=${path#"$prefix/"}
 
     if [ "${path}" = "${result}" ]; then
-        echo ${result}
+        if [ "$with_leading" = "t" ]; then
+            echo "/${result}"
+        else
+            echo "${result}"
+        fi
     else
         echo ".../${result}"
     fi
@@ -128,23 +155,20 @@ function cut_path() {
 function get_shorter_pwd() {
     rtn=$?
     cwd=`pwd`
-    if [ "${cwd}" = "/" ]; then
-        echo /
-        return $rtn
-    fi
 
-    head=$(echo ${cwd} | cut -d "/" -f "1,2,3")
+    # http://mywiki.wooledge.org/BashFAQ/100#Removing_part_of_a_string
+    # first, remove from start that matches /*/*, then remove tail
+    tail=${cwd#/*/*/}
+    head=${cwd%%"/$tail"}
 
     if [ "${head}x" = "${HOME}x" ]; then
-        tail=$(echo ${cwd} | cut -d "/" -f "4-")
-        if [ "${tail}x" = "x" ]; then
+        if [ "${head}" = "${tail}" ]; then
             cwd="~"
         else
-            cwd=$(echo "~"/$(cut_path "${tail}"))
+            cwd=$(echo "~"/$(cut_path "${tail}" f))
         fi
     else
-        # TODO did not handle /home case well
-        cwd=$(cut_path "${cwd#"/"}") # remove leading / before calling cut_path
+        cwd=$(cut_path "${cwd#"/"}" t) # remove leading / before calling cut_path
     fi
 
     echo $cwd
