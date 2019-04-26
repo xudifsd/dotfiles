@@ -111,8 +111,48 @@ function parse_exit_code() {
 	[ $RET -ne 0 ] && echo "\[\e[41m\]${RET}\[\e[0m\]"
 }
 
+function cut_path() {
+    path=$1
+
+    # http://mywiki.wooledge.org/BashFAQ/100#Removing_part_of_a_string
+    prefix=${path%/*/*}
+    result=${path#"$prefix/"}
+
+    if [ "${path}" = "${result}" ]; then
+        echo ${result}
+    else
+        echo ".../${result}"
+    fi
+}
+
+function get_shorter_pwd() {
+	rtn=$?
+    cwd=`pwd`
+    if [ "${cwd}" = "/" ]; then
+        echo /
+        return $rtn
+    fi
+
+    head=$(echo ${cwd} | cut -d "/" -f "1,2,3")
+
+    if [ "${head}x" = "${HOME}x" ]; then
+        tail=$(echo ${cwd} | cut -d "/" -f "4-")
+        if [ "${tail}x" = "x" ]; then
+            cwd="~"
+        else
+            cwd=$(echo "~"/$(cut_path "${tail}"))
+        fi
+    else
+		# TODO did not handle /home case well
+        cwd=$(cut_path "${cwd#"/"}") # remove leading / before calling cut_path
+    fi
+
+    echo $cwd
+	return $rtn
+}
+
 # https://askubuntu.com/a/1012770/949536
-export PROMPT_COMMAND='PS1="\[\e[33m\]\A|\[\e[m\]\u@\h:\[\e[34m\]\w\[\e[m\]`parse_git_branch``parse_exit_code`\\$ "'
+export PROMPT_COMMAND='PS1="\[\e[33m\]\A|\[\e[m\]\[\e[34m\]`get_shorter_pwd`\[\e[m\]`parse_git_branch``parse_exit_code`\\$ "'
 
 [[ -s ~/.bash_envs ]] && source ~/.bash_envs
 [[ -s ~/.bash_alias ]] && source ~/.bash_alias
