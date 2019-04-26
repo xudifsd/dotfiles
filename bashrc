@@ -52,63 +52,63 @@ fi
 # from http://ezprompt.net/ with some modification
 # get current branch in git repo
 function parse_git_branch() {
-	rtn=$? # for parse_git_dirty
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	if [ ! "${BRANCH}" == "" ]
-	then
-		STAT=`parse_git_dirty`
-		if [ "$STAT" == "" ]
-		then
-			BRANCH=`echo "\[\e[32m\]${BRANCH}\[\e[0m\]"`
-		else
-			BRANCH=`echo "\[\e[31m\]${BRANCH}\[\e[0m\]"`
-			STAT=`echo "\[\e[38;5;220m\]${STAT}\[\e[0m\]"`
-		fi
-		echo "[${BRANCH}${STAT}]"
-	else
-		echo ""
-	fi
-	return $rtn
+    rtn=$? # for parse_git_dirty
+    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    if [ ! "${BRANCH}" == "" ]
+    then
+        STAT=`parse_git_dirty`
+        if [ "$STAT" == "" ]
+        then
+            BRANCH=`echo "\[\e[32m\]${BRANCH}\[\e[0m\]"`
+        else
+            BRANCH=`echo "\[\e[31m\]${BRANCH}\[\e[0m\]"`
+            STAT=`echo "\[\e[38;5;220m\]${STAT}\[\e[0m\]"`
+        fi
+        echo "[${BRANCH}${STAT}]"
+    else
+        echo ""
+    fi
+    return $rtn
 }
 
 # get current status of git repo
 function parse_git_dirty {
-	status=`git status 2>&1 | tee`
-	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
-	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
-	ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
-	newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
-	renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
-	deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
-	bits=''
-	if [ "${renamed}" == "0" ]; then
-		bits=">${bits}"
-	fi
-	if [ "${ahead}" == "0" ]; then
-		bits="*${bits}"
-	fi
-	if [ "${newfile}" == "0" ]; then
-		bits="+${bits}"
-	fi
-	if [ "${untracked}" == "0" ]; then
-		bits="?${bits}"
-	fi
-	if [ "${deleted}" == "0" ]; then
-		bits="x${bits}"
-	fi
-	if [ "${dirty}" == "0" ]; then
-		bits="!${bits}"
-	fi
-	if [ ! "${bits}" == "" ]; then
-		echo -e "${bits}"
-	else
-		echo ""
-	fi
+    status=`git status 2>&1 | tee`
+    dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+    untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+    ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+    newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+    renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+    deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+    bits=''
+    if [ "${renamed}" == "0" ]; then
+        bits=">${bits}"
+    fi
+    if [ "${ahead}" == "0" ]; then
+        bits="*${bits}"
+    fi
+    if [ "${newfile}" == "0" ]; then
+        bits="+${bits}"
+    fi
+    if [ "${untracked}" == "0" ]; then
+        bits="?${bits}"
+    fi
+    if [ "${deleted}" == "0" ]; then
+        bits="x${bits}"
+    fi
+    if [ "${dirty}" == "0" ]; then
+        bits="!${bits}"
+    fi
+    if [ ! "${bits}" == "" ]; then
+        echo -e "${bits}"
+    else
+        echo ""
+    fi
 }
 
 function parse_exit_code() {
-	RET=$?
-	[ $RET -ne 0 ] && echo "\[\e[41m\]${RET}\[\e[0m\]"
+    RET=$?
+    [ $RET -ne 0 ] && echo "\[\e[41m\]${RET}\[\e[0m\]"
 }
 
 function cut_path() {
@@ -126,7 +126,7 @@ function cut_path() {
 }
 
 function get_shorter_pwd() {
-	rtn=$?
+    rtn=$?
     cwd=`pwd`
     if [ "${cwd}" = "/" ]; then
         echo /
@@ -143,12 +143,12 @@ function get_shorter_pwd() {
             cwd=$(echo "~"/$(cut_path "${tail}"))
         fi
     else
-		# TODO did not handle /home case well
+        # TODO did not handle /home case well
         cwd=$(cut_path "${cwd#"/"}") # remove leading / before calling cut_path
     fi
 
     echo $cwd
-	return $rtn
+    return $rtn
 }
 
 # https://askubuntu.com/a/1012770/949536
