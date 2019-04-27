@@ -1,10 +1,11 @@
 shell_dir=`dirname $0`
 cd $shell_dir
+shell_dir=`pwd`
 
 if [ -e ~/Templates ] ; then
     mv ~/Templates /tmp/bak_Templates
 fi
-ln -sf Templates ~/Templates
+ln -sf ${shell_dir}/Templates ~/Templates
 ln -f gitconfig ~/.gitconfig
 ln -f bashrc ~/.bashrc
 ln -f bash_alias ~/.bash_alias
