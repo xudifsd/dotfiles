@@ -1,3 +1,6 @@
+# for color ls output, see man ls
+export CLICOLOR=t
+
 if [ -d ~/bin ]; then
     export PATH=$PATH:~/bin
 fi
