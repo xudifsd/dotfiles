@@ -5,6 +5,10 @@ if [ -d ~/bin ]; then
     export PATH=$PATH:~/bin
 fi
 
+if [ -d ~/.local/bin ]; then
+    export PATH=$PATH:~/.local/bin
+fi
+
 export EDITOR=vim
 
 export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter

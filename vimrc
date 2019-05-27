@@ -123,6 +123,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'https://github.com/nathangrigg/vim-beancount'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
