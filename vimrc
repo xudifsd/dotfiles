@@ -178,3 +178,6 @@ filetype plugin indent off
 set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
+
+autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
+autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
