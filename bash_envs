@@ -18,7 +18,7 @@ export MAIL=/var/spool/mail/xudifsd
 export LC_ALL=en_US.UTF-8
 export GOROOT=~/golang
 export GOPATH=~/gopath
-export PATH=$PATH:$GOROOT/bin:$HOME/.cargo/bin
+export PATH=$PATH:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.5.0/bin
 
 #[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
 export TMUX_POWERLINE_SEG_WEATHER_LOCATION=2151330
