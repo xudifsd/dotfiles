@@ -16,6 +16,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias vi='vim'
+alias vise='vim -c "set noswapfile noundofile viminfo="'
 alias sudo='sudo '	#makes you could use config of your own
 alias sig='ctags -R --c-kinds=+p --fields=+S .'	#code_complete will use tags to scan prototype of function
 
