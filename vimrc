@@ -181,3 +181,32 @@ syntax on
 
 autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
+
+" Transparent editing of gpg encrypted files.
+" https://www.endpoint.com/blog/2012/05/16/vim-working-with-encryption
+augroup encrypted
+  au!
+
+  autocmd BufReadPre,FileReadPre *.gpg set viminfo=
+  autocmd BufReadPre,FileReadPre *.gpg set noswapfile
+  autocmd BufReadPre,FileReadPre *.gpg set noundofile
+
+  " Switch to binary mode to read the encrypted file
+  autocmd BufReadPre,FileReadPre *.gpg set bin
+  autocmd BufReadPre,FileReadPre *.gpg let ch_save = &ch|set ch=2
+  autocmd BufReadPost,FileReadPost *.gpg '[,']!gpg --decrypt 2> /dev/null
+
+  " Switch to normal mode for editing
+  autocmd BufReadPost,FileReadPost *.gpg set nobin
+  autocmd BufReadPost,FileReadPost *.gpg let &ch = ch_save|unlet ch_save
+  autocmd BufReadPost,FileReadPost *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
+  autocmd BufReadPost,FileReadPost *.gpg set viminfo=
+  autocmd BufReadPost,FileReadPost *.gpg set noswapfile
+  autocmd BufReadPost,FileReadPost *.gpg set noundofile
+
+  " Convert all text to encrypted text before writing
+  autocmd BufWritePre,FileWritePre *.gpg '[,']!gpg --default-recipient-self -ae 2>/dev/null
+  " Undo the encryption so we are back in the normal text, directly
+  " after the file has been written.
+  autocmd BufWritePost,FileWritePost *.gpg u
+augroup END
