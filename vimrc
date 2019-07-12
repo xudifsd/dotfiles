@@ -210,3 +210,9 @@ augroup encrypted
   " after the file has been written.
   autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
+
+augroup safeEdit
+  autocmd BufReadPost,FileReadPost *.beancount set viminfo=
+  autocmd BufReadPost,FileReadPost *.beancount set noswapfile
+  autocmd BufReadPost,FileReadPost *.beancount set noundofile
+augroup END
