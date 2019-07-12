@@ -20,5 +20,7 @@ export GOROOT=~/golang
 export GOPATH=~/gopath
 export PATH=$PATH:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.5.0/bin
 
-#[[ -z "$TMUX" ]] && exec tmux -2 -f ~/.tmux.conf
+# https://stackoverflow.com/a/55032706/845762
+export GPG_TTY=$(tty)
+
 export TMUX_POWERLINE_SEG_WEATHER_LOCATION=2151330
