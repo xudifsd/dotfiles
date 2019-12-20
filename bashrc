@@ -155,3 +155,4 @@ export PROMPT_COMMAND='PS1="\[\e[33m\]\A|\[\e[m\]\[\e[34m\]`get_shorter_pwd`\[\e
 [[ -s ~/.bash_envs ]] && source ~/.bash_envs
 [[ -s ~/.bash_alias ]] && source ~/.bash_alias
 [[ -s ~/.bash_completions ]] && source ~/.bash_completions
+umask 0002
