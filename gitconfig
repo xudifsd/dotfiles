@@ -21,6 +21,11 @@
     rf = "!f() { b=$(git rev-parse --abbrev-ref HEAD) ; git push origin -f $b:dixu/$b ; }; f"
     d = "!f() { git push origin :dixu/$1 ; git branch -D $1 ; }; f"
     co = checkout
+    cm = commit
+    fo = fetch origin
+    fu = fetch upstream
+    po = push origin
+    pu = push upstream
 [credential]
     helper = cache --timeout 86400
 [merge]
