@@ -46,3 +46,7 @@ alias tmux='TERM=xterm-256color tmux'
 alias ssh='TERM=xterm ssh'
 
 alias pdf2htmlEX='pdf2htmlEX --fit-width 1024 --embed-outline 0'
+
+alias intoj='./deploy.py kubectl exec -it `./deploy.py kubectl get pod -l app=jobmanager | cut -d " " -f 1 | tail -n 1` -c jobmanager bash'
+alias logj='./deploy.py kubectl logs `./deploy.py kubectl get pod -l app=jobmanager | cut -d " " -f 1 | tail -n 1` -c jobmanager'
+alias dctl='./deploy.py kubectl'

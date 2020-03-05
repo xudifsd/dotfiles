@@ -125,6 +125,13 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'https://github.com/nathangrigg/vim-beancount'
 
+" https://github.com/google/vim-codefmt
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" " `:help :Glaive` for usage.
+Plugin 'google/vim-glaive'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -179,8 +186,8 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
 
-autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
-autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
+"autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
+"autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
 
 " Transparent editing of gpg encrypted files.
 " https://www.endpoint.com/blog/2012/05/16/vim-working-with-encryption
@@ -215,4 +222,19 @@ augroup safeEdit
   autocmd BufReadPost,FileReadPost *.beancount set viminfo=
   autocmd BufReadPost,FileReadPost *.beancount set noswapfile
   autocmd BufReadPost,FileReadPost *.beancount set noundofile
+augroup END
+
+" auto format code in google's way
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
 augroup END
