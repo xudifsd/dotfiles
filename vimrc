@@ -111,13 +111,14 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
+" Install via `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 Plugin 'gmarik/vundle'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'https://github.com/terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'rust-lang/rust.vim'
-Plugin 'wakatime/vim-wakatime'
+"Plugin 'wakatime/vim-wakatime'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'https://github.com/nathangrigg/vim-beancount'

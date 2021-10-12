@@ -1,3 +1,6 @@
 [[ -s ~/.git-completion.bash ]] && source ~/.git-completion.bash
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-source <(kubectl completion bash)
+if command -v kubectl -h &> /dev/null
+then
+    source <(kubectl completion bash)
+fi

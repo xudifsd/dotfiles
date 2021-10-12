@@ -27,6 +27,11 @@ shopt -s checkwinsize
 # get current branch in git repo
 function parse_git_branch() {
     rtn=$? # for parse_git_dirty
+    # git in WSL is slow, disable it
+    if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+        echo ""
+        return $rtn
+    fi
     BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
     if [ ! "${BRANCH}" == "" ]
     then
@@ -156,3 +161,5 @@ export PROMPT_COMMAND='PS1="\[\e[33m\]\A|\[\e[m\]\[\e[34m\]`get_shorter_pwd`\[\e
 [[ -s ~/.bash_alias ]] && source ~/.bash_alias
 [[ -s ~/.bash_completions ]] && source ~/.bash_completions
 umask 0002
+# https://unix.stackexchange.com/a/12108
+stty -ixon
