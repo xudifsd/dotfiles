@@ -17,9 +17,9 @@
     diffw = diff --word-diff-regex=.
     ff = merge --ff-only
     u = ls-files --others --exclude-standard
-    r = "!f() { b=$(git rev-parse --abbrev-ref HEAD) ; git push origin $b:dixu/$b ; }; f"
-    rf = "!f() { b=$(git rev-parse --abbrev-ref HEAD) ; git push origin -f $b:dixu/$b ; }; f"
-    d = "!f() { git push origin :dixu/$1 ; git branch -D $1 ; }; f"
+    r = "!f() { b=$(git rev-parse --abbrev-ref HEAD) ; git push origin $b:$b ; }; f"
+    rf = "!f() { b=$(git rev-parse --abbrev-ref HEAD) ; git push origin -f $b:$b ; }; f"
+    d = "!f() { git branch -D $1 ; }; f"
     co = checkout
     cm = commit
     fo = fetch origin
