@@ -25,7 +25,9 @@
     fo = fetch origin
     fu = fetch upstream
     po = push origin
+    pof = push origin -f
     pu = push upstream
+    amend = commit --amend --no-edit
 [credential]
     helper = cache --timeout 86400
 [merge]

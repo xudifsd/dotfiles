@@ -25,7 +25,15 @@ set backspace=indent,eol,start "make backspace work like most other apps
 set list!
 set list listchars=tab:»·,trail:·
 set tags=tags; "also search tags in parent dir
-set pastetoggle=<F4>
+
+" Toggle paste/nopaste mode with <C-d>
+nnoremap <C-d> :set invpaste<CR>
+inoremap <C-d> <C-o>:set invpaste<CR>
+set pastetoggle=<C-d>
+
+" Toggle line numbers (nu/nonu) with <C-f>
+nnoremap <C-f> :set invnumber<CR>
+inoremap <C-f> <C-o>:set invnumber<CR>
 
 " for when we forget to use sudo to open/edit a file
 cmap w!! w !sudo tee % >/dev/null
@@ -238,7 +246,6 @@ augroup autoformat_settings
 augroup END
 
 "colorscheme molokai
-"colorscheme solarized
 colorscheme solarized
 
 if &diff
