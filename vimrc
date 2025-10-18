@@ -183,7 +183,7 @@ map 'm :call MarkPop()<CR>
 
 map <C-e> $
 map <C-a> 0
-nmap <leader>now :r!date<CR>
+nmap <leader>now :r!TZ=America/Los_Angeles date<CR>
 nmap <leader>c :%y+<CR> " https://stackoverflow.com/a/20912576/845762
 
 filetype off
