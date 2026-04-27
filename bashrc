@@ -163,3 +163,4 @@ export PROMPT_COMMAND='PS1="\[\e[33m\]\A|\[\e[m\]\[\e[34m\]`get_shorter_pwd`\[\e
 umask 0002
 # https://unix.stackexchange.com/a/12108
 stty -ixon
+eval "$(/opt/homebrew/bin/brew shellenv bash)"

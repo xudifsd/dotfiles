@@ -11,16 +11,16 @@ fi
 
 export EDITOR=vim
 
-export PYTHONSTARTUP=~/.pythonstartup.py	#this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
+export PYTHONSTARTUP=~/.pythonstartup.py #this is use .pythonstartup.py as a start script to add atuo-complete function to python interpreter
 
 export MAIL=/var/spool/mail/xudifsd
 
 export LC_ALL=en_US.UTF-8
-export GOROOT=/mnt/dev/go
-export GOPATH=/mnt/dev/gopath
-export PATH=$PATH:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.5.0/bin
 
 # https://stackoverflow.com/a/55032706/845762
 export GPG_TTY=$(tty)
 
 export TMUX_POWERLINE_SEG_WEATHER_LOCATION=2151330
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+eval "$(/opt/homebrew/bin/brew shellenv bash)"
