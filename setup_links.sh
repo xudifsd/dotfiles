@@ -14,3 +14,4 @@ ln -f bash_completions ~/.bash_completions
 ln -f vimrc ~/.vimrc
 ln -f pythonstartup.py ~/.pythonstartup.py
 ln -f tmux.conf ~/.tmux.conf
+ln -f bash_profile ~/.bash_profile

@@ -142,7 +142,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " for vim airline
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 nnoremap <C-1> :1b<CR>
